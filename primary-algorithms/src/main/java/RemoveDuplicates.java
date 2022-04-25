@@ -1,12 +1,10 @@
 /**
  * @author Xu007
  * @create 2022-04-25 21:01
+ * 删除排序数组中的重复项
  */
 public class RemoveDuplicates {
 
-    public static void main(String[] args) {
-
-    }
     //双指针解法
     public int removeDuplicates1(int[] A) {
         if(A==null||A.length==0){
