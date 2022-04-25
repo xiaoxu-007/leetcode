@@ -37,4 +37,22 @@ public class RemoveDuplicates {
         }
         return A.length-count;
     }
+
+    //网友做法
+    public int removeDuplicates3(int[] A) {
+        if (A.length == 0 || A == null) {
+            return 0;
+        }
+        int count = 1;//个数
+        int index = 1;//游标
+        for (int i = 1; i < A.length; i++) {
+            if (A[i] == A[index - 1]) {
+                continue;
+            }
+            A[index] = A[i];
+            index++;
+            count++;
+        }
+        return count;
+    }
 }
