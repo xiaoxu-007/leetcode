@@ -17,7 +17,7 @@
 public class Rotate {
 
     //1使用临时数组
-    public void rotate(int[] nums, int k) {
+    public void rotate1(int[] nums, int k) {
         int length=nums.length;
         int temp[]=new int[length];
         //建一个临时数组
@@ -28,5 +28,42 @@ public class Rotate {
         for(int i=0;i<length;i++){
             nums[(i+k)%length]=temp[i];
         }
+    }
+    //2 多次反转
+    public void rotate2(int[] nums, int k) {
+        int length=nums.length;
+        k%=length;
+        reverse(nums, 0, length-1);
+        reverse(nums, 0, k-1);
+        reverse(nums, k, length-1);
+
+    }
+    public void reverse(int[] nums,int start,int end){
+
+        while(start<end){
+            int temp=nums[start];
+            nums[start++]=nums[end];
+            nums[end--]=temp;
+        }
+    }
+     //3 环形旋转
+    public void rotate3(int[] nums, int k) {
+            int hold=nums[0];
+            int index=0;
+            int length=nums.length;
+            boolean[] visited=new boolean[length];
+            for(int i=0;i<length;i++){
+                index=(index+k)%length;
+                if(visited[index]){
+                    index=(index+1)%length;
+                    hold=nums[index];
+                    i--;
+                }else{
+                    visited[index]=true;
+                    int temp=nums[index];
+                    nums[index]=hold;
+                    hold=temp;
+                }
+            }
     }
 }
