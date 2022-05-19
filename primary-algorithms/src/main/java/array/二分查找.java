@@ -7,9 +7,9 @@ package array;
 public class 二分查找 {
     public static void main(String[] args) {
 
-        int [] nums=new int[]{-1,0,3,5,9,12,10000};
+        int [] nums=new int[]{1,3,5,6};
         int target=9;
-        System.out.println(search2(nums, target));
+        System.out.println(searchInsert(nums, 2));
     }
 
     /**
@@ -88,5 +88,37 @@ public class 二分查找 {
             return twoGO(nums, left, mid-1, target);
         }
         return twoGO(nums, mid+1, right, target);
+    }
+
+
+    public static int  searchInsert(int[] nums, int target) {
+        //避免二分查找边界浪费时间
+        if (target < nums[0]) {
+            return 0;
+        }
+        if (target > nums[nums.length - 1]) {
+            return nums.length;
+        }
+
+        //二分查找
+        int left = 0;
+        int right = nums.length - 1;
+        int mid = 0;
+        while (left <= right) {
+            mid = (left + right) >> 1;
+            if (target == nums[mid]) {
+                return mid;
+            } else if (target > nums[mid]) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        //做判断
+        if (nums[mid] > target) {
+            return mid;
+        } else {
+            return mid + 1;
+        }
     }
 }
