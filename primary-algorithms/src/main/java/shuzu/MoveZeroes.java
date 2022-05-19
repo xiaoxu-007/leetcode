@@ -1,3 +1,5 @@
+package shuzu;
+
 import java.util.Arrays;
 
 /**

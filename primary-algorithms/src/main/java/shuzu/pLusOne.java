@@ -1,3 +1,5 @@
+package shuzu;
+
 /**
  * @author Xu007
  * @create 2022-05-04 19:05
